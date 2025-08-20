@@ -26,7 +26,7 @@ export default function Page() {
                 >
                     <h1 className="text-xl font-bold">{month}</h1>
 
-                    <div className="grid grid-cols-7 grow">
+                    <div className="grid grid-cols-7 grow border-l border-t">
                         {Array.from(
                             { length: daysInMonth[index] },
                             (_, day) => (
