@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect } from "react";
+
 const months = [
     "January",
     "February",
@@ -15,7 +19,14 @@ const months = [
 
 const daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
+const currentMonth = new Date().getMonth();
+
 export default function Page() {
+    useEffect(() => {
+        const el = document.getElementById(months[currentMonth].toLowerCase());
+        if (el) el.scrollIntoView();
+    }, []);
+
     return (
         <>
             {months.map((month, index) => (
