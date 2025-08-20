@@ -17,7 +17,7 @@ export default function Page() {
     return (
         <>
             {months.map((month, index) => (
-                <div className="h-screen" key={index}>
+                <div className="h-screen p-4" key={index}>
                     <h1 className="text-xl font-bold">{month}</h1>
                 </div>
             ))}
