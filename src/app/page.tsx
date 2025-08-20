@@ -31,9 +31,7 @@ export default function Page() {
                             { length: daysInMonth[index] },
                             (_, day) => (
                                 <div key={day} className="border-r border-b">
-                                    <span className="text-large">
-                                        {day + 1}
-                                    </span>
+                                    <span>{day + 1}</span>
                                 </div>
                             )
                         )}
