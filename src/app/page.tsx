@@ -20,6 +20,7 @@ const months = [
 const daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 const currentMonth = new Date().getMonth();
+const currentDay = new Date().getDate();
 
 export default function Page() {
     useEffect(() => {
@@ -41,7 +42,14 @@ export default function Page() {
                         {Array.from(
                             { length: daysInMonth[index] },
                             (_, day) => (
-                                <div key={day} className="border-r border-b">
+                                <div
+                                    key={day}
+                                    className={`border-r border-b ${
+                                        day + 1 === currentDay &&
+                                        index === currentMonth &&
+                                        "bg-blue-100"
+                                    }`}
+                                >
                                     <span>{day + 1}</span>
                                 </div>
                             )
