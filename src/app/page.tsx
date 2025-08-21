@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState } from "react";
 
 const months = [
     "January",
@@ -23,40 +23,61 @@ const currentMonth = new Date().getMonth();
 const currentDay = new Date().getDate();
 
 export default function Page() {
-    useEffect(() => {
-        const el = document.getElementById(months[currentMonth].toLowerCase());
-        if (el) el.scrollIntoView();
-    }, []);
+    const [visibleMonth, setVisibleMonth] = useState(currentMonth);
 
     return (
-        <>
-            {months.map((month, index) => (
-                <div
-                    className="h-screen p-4 flex flex-col gap-4"
-                    key={index}
-                    id={month.toLocaleLowerCase()}
-                >
-                    <h1 className="text-xl font-bold">{month}</h1>
+        <div className="h-screen p-4 flex flex-col gap-4">
+            <div className="flex justify-center">
+                <div className="relative flex items-center w-64 justify-between">
+                    <button
+                        onClick={() =>
+                            setVisibleMonth((m) => Math.max(0, m - 1))
+                        }
+                        disabled={visibleMonth === 0}
+                        className={`px-2 ${
+                            visibleMonth === 0
+                                ? "opacity-30 cursor-not-allowed"
+                                : "cursor-pointer"
+                        }`}
+                    >
+                        &#60;
+                    </button>
 
-                    <div className="grid grid-cols-7 grow border-l border-t">
-                        {Array.from(
-                            { length: daysInMonth[index] },
-                            (_, day) => (
-                                <div
-                                    key={day}
-                                    className={`border-r border-b ${
-                                        day + 1 === currentDay &&
-                                        index === currentMonth &&
-                                        "bg-blue-100"
-                                    }`}
-                                >
-                                    <span>{day + 1}</span>
-                                </div>
-                            )
-                        )}
-                    </div>
+                    <span className="text-xl font-bold">
+                        {months[visibleMonth]}
+                    </span>
+
+                    <button
+                        onClick={() =>
+                            setVisibleMonth((m) => Math.min(11, m + 1))
+                        }
+                        disabled={visibleMonth === 11}
+                        className={`px-2 ${
+                            visibleMonth === 11
+                                ? "opacity-30 cursor-not-allowed"
+                                : "cursor-pointer"
+                        }`}
+                    >
+                        &#62;
+                    </button>
                 </div>
-            ))}
-        </>
+            </div>
+
+            <div className="grid grid-cols-7 grow border-l border-t">
+                {Array.from({ length: daysInMonth[visibleMonth] }, (_, day) => (
+                    <div
+                        key={day}
+                        className={`border-r border-b flex ${
+                            day + 1 === currentDay &&
+                            visibleMonth === currentMonth
+                                ? "bg-blue-100"
+                                : ""
+                        }`}
+                    >
+                        <span>{day + 1}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
     );
 }
