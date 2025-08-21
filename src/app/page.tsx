@@ -67,7 +67,7 @@ export default function Page() {
                 {Array.from({ length: daysInMonth[visibleMonth] }, (_, day) => (
                     <div
                         key={day}
-                        className={`border-r border-b flex ${
+                        className={`border-r border-b ${
                             day + 1 === currentDay &&
                             visibleMonth === currentMonth
                                 ? "bg-blue-100"
