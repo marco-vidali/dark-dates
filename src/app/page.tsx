@@ -2,6 +2,15 @@
 
 import { useState } from "react";
 import dates from "@/database/dates.json";
+import {
+    DialogHeader,
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
 
 const months = [
     "January",
@@ -91,14 +100,35 @@ export default function Page() {
                             </span>
 
                             <div className="flex flex-col gap-1 mt-1">
-                                {dayEvents.map((event) => (
-                                    <span
-                                        key={event.id}
-                                        className="text-xs bg-red-100 text-red-800 rounded px-1"
-                                    >
-                                        {event.title}
-                                    </span>
-                                ))}
+                                {dayEvents.map((event) => {
+                                    const eventDate = new Date(event.date);
+                                    const yearsAgo =
+                                        new Date().getFullYear() -
+                                        eventDate.getFullYear();
+
+                                    return (
+                                        <Dialog key={event.id}>
+                                            <DialogTrigger>
+                                                <Badge className="cursor-pointer">
+                                                    {event.title}
+                                                </Badge>
+                                            </DialogTrigger>
+                                            <DialogContent>
+                                                <DialogHeader>
+                                                    <DialogTitle>
+                                                        {event.title}
+                                                    </DialogTitle>
+                                                    <DialogTitle className="text-md text-gray-500">
+                                                        {yearsAgo} years ago
+                                                    </DialogTitle>
+                                                    <DialogDescription>
+                                                        {event.description}
+                                                    </DialogDescription>
+                                                </DialogHeader>
+                                            </DialogContent>
+                                        </Dialog>
+                                    );
+                                })}
                             </div>
                         </div>
                     );
