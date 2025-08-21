@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import dates from "@/database/dates.json";
 
 const months = [
     "January",
@@ -64,19 +65,44 @@ export default function Page() {
             </div>
 
             <div className="grid grid-cols-7 grow border-l border-t">
-                {Array.from({ length: daysInMonth[visibleMonth] }, (_, day) => (
-                    <div
-                        key={day}
-                        className={`border-r border-b ${
-                            day + 1 === currentDay &&
-                            visibleMonth === currentMonth
-                                ? "bg-blue-100"
-                                : ""
-                        }`}
-                    >
-                        <span>{day + 1}</span>
-                    </div>
-                ))}
+                {Array.from({ length: daysInMonth[visibleMonth] }, (_, day) => {
+                    const dayNumber = day + 1;
+
+                    const dayEvents = dates.filter((event) => {
+                        const eventDate = new Date(event.date);
+                        return (
+                            eventDate.getDate() === dayNumber &&
+                            eventDate.getMonth() === visibleMonth
+                        );
+                    });
+
+                    return (
+                        <div
+                            key={day}
+                            className={`border-r border-b p-1 flex flex-col ${
+                                dayNumber === currentDay &&
+                                visibleMonth === currentMonth
+                                    ? "bg-blue-100"
+                                    : ""
+                            }`}
+                        >
+                            <span className="text-sm font-medium">
+                                {dayNumber}
+                            </span>
+
+                            <div className="flex flex-col gap-1 mt-1">
+                                {dayEvents.map((event) => (
+                                    <span
+                                        key={event.id}
+                                        className="text-xs bg-red-100 text-red-800 rounded px-1"
+                                    >
+                                        {event.title}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );
