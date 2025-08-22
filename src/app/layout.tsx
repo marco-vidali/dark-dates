@@ -7,6 +7,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <head>
+                <title>Dark Dates</title>
+            </head>
             <body>
                 <div>{children}</div>
             </body>
