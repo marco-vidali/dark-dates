@@ -9,8 +9,8 @@ import {
     DialogDescription,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog";
-import { Badge } from "@/components/ui/badge";
+} from "@/components/dialog";
+import { Badge } from "@/components/badge";
 
 const months = [
     "January",
