@@ -23,13 +23,15 @@ export default function Day({ day, visibleMonth, currentMonth }: DayProps) {
     return (
         <div
             key={day}
-            className={`border-r border-b p-1 flex flex-col ${
+            className={`border-r border-b p-2 flex flex-col gap-2 ${
                 dayNumber === currentDay && visibleMonth === currentMonth
                     ? "bg-secondary"
                     : ""
             }`}
         >
-            <span className="text-sm font-medium">{dayNumber}</span>
+            <span className={`text-2xl pl-1 font-medium opacity-50`}>
+                {dayNumber}
+            </span>
 
             <div>
                 {dayEvents.map((event) => (

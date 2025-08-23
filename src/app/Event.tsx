@@ -21,7 +21,7 @@ export default function Event({ id, title, description, date }: EventProps) {
 
     return (
         <Dialog key={id}>
-            <DialogTrigger>
+            <DialogTrigger className="mr-1 mb-1">
                 <Badge className="cursor-pointer">{title}</Badge>
             </DialogTrigger>
             <DialogContent>

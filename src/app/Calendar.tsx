@@ -11,7 +11,7 @@ export default function Calendar({
     currentMonth,
 }: CalendarProps) {
     return (
-        <div className="grid grid-cols-7 grow border-l border-t">
+        <div className="grid grid-cols-7 grid-rows-5 grow border-l border-t">
             {Array.from({ length: daysInMonth[visibleMonth] }, (_, day) => (
                 <Day
                     key={day}

@@ -3,7 +3,6 @@
 import MonthSelector from "./MonthSelector";
 import Calendar from "./Calendar";
 import { useState } from "react";
-import { daysInMonth } from "@/lib/consts";
 
 const currentMonth = new Date().getMonth();
 
