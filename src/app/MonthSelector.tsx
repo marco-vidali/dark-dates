@@ -15,13 +15,13 @@ export default function MonthSelector({
             <button
                 onClick={() => setVisibleMonth((m) => Math.max(0, m - 1))}
                 disabled={visibleMonth === 0}
-                className={`px-2 ${
+                className={`p-2 rounded-full ${
                     visibleMonth === 0
-                        ? "opacity-30 cursor-not-allowed"
-                        : "cursor-pointer"
+                        ? "opacity-50 cursor-not-allowed"
+                        : "cursor-pointer hover:bg-secondary"
                 }`}
             >
-                &#60;
+                ◀
             </button>
 
             <span className="text-xl font-bold">{months[visibleMonth]}</span>
@@ -29,13 +29,13 @@ export default function MonthSelector({
             <button
                 onClick={() => setVisibleMonth((m) => Math.min(11, m + 1))}
                 disabled={visibleMonth === 11}
-                className={`px-2 ${
+                className={`p-2 rounded-full ${
                     visibleMonth === 11
-                        ? "opacity-30 cursor-not-allowed"
-                        : "cursor-pointer"
+                        ? "opacity-50 cursor-not-allowed"
+                        : "cursor-pointer hover:bg-secondary"
                 }`}
             >
-                &#62;
+                ▶
             </button>
         </div>
     );
