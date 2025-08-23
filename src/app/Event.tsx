@@ -27,7 +27,7 @@ export default function Event({ id, title, description, date }: EventProps) {
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle>{title}</DialogTitle>
-                    <DialogTitle className="text-md text-gray-500">
+                    <DialogTitle className="text-md opacity-50">
                         {yearsAgo} years ago
                     </DialogTitle>
                     <DialogDescription>{description}</DialogDescription>

@@ -25,7 +25,7 @@ export default function Day({ day, visibleMonth, currentMonth }: DayProps) {
             key={day}
             className={`border-r border-b p-1 flex flex-col ${
                 dayNumber === currentDay && visibleMonth === currentMonth
-                    ? "bg-blue-100"
+                    ? "bg-secondary"
                     : ""
             }`}
         >
