@@ -1,4 +1,5 @@
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export default function RootLayout({
     children,
@@ -6,12 +7,14 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <head>
                 <title>Dark Dates</title>
             </head>
             <body>
-                <div>{children}</div>
+                <ThemeProvider attribute="class" defaultTheme="dark">
+                    <div>{children}</div>
+                </ThemeProvider>
             </body>
         </html>
     );
